@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Admins from '../data/admins';
 import axios from 'axios';
 
+import schoollogo from '../imgs/schoollogo.png'
+
 export default class Home extends Component {
   /**
    * Constructor handles the state variables of this component
@@ -43,31 +45,34 @@ export default class Home extends Component {
   render() {
     //const reqURL = process.env.NODE_ENV === 'production' ? '/items': 'http://localhost:5000/items';
     return (
-      <div className="home-login">
-        <form onSubmit={this.logIn} className='home-form'>
-          <label>Admin ID Number: </label>
-          <input 
-            type="text" 
-            name="adminID" 
-            value={this.state.adminID}
-            onChange={this.inputChange}
-          />
-          <br />
-          <label>Password: </label>
-          <input 
-            type="password" 
-            name="adminPassword"
-            value={this.state.adminPassword}
-            onChange={this.inputChange}
-          />
-          <br />
-          <button>Log In</button>
-        </form>
-        {
-          this.state.errorMsg !== '' ?
-          <p className="error-msg">{this.state.errorMsg}</p>
-          : null
-        }
+      <div>
+        <img src={schoollogo} alt="school_logo"/>
+        <div className="home-login">        
+          <form onSubmit={this.logIn} className='home-form'>
+            <label>Admin ID Number: </label>
+            <input 
+              type="text" 
+              name="adminID" 
+              value={this.state.adminID}
+              onChange={this.inputChange}
+            />
+            <br />
+            <label>Password: </label>
+            <input 
+              type="password" 
+              name="adminPassword"
+              value={this.state.adminPassword}
+              onChange={this.inputChange}
+            />
+            <br />
+            <button>Log In</button>
+          </form>
+          {
+            this.state.errorMsg !== '' ?
+            <p className="error-msg">{this.state.errorMsg}</p>
+            : null
+          }
+        </div>
       </div>
     )
   }

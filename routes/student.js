@@ -93,4 +93,29 @@ router.delete('/delstudent/:id', async (req, res) => {
   } catch (err) { res.status(500).json({error: err.message}); }
 })
 
+/**
+ * @route   UPDATE student/updatestudent/:id
+ * @desc    updates a student info given by their id
+ * @component UpdateStudent.js deletes a student
+ * */
+router.post('/updatestudent/:id', async (req, res) => {
+  try {
+    // check if student id exists
+    const studentExists = Student.findById(req.params.id);
+    if (!studentExists) return validation('studentNotExist', res);
+
+    const {student_id, 
+      lastname, 
+      firstname, 
+      middlename, 
+      age, 
+      dob, 
+      address, 
+      contact, 
+      course, 
+      yearsection, 
+      sub_sched_lst} = req.body;    
+  } catch (err) { res.status(500).json({error: err.message}); }
+})
+
 module.exports = router;

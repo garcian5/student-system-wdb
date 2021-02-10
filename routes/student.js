@@ -101,7 +101,7 @@ router.delete('/delstudent/:id', async (req, res) => {
 router.post('/updatestudent/:id', async (req, res) => {
   try {
     // check if student id exists
-    const studentExists = Student.findById(req.params.id);
+    const studentExists = await Student.findById(req.params.id);
     if (!studentExists) return validation('studentNotExist', res);
 
     const {student_id, 
@@ -114,7 +114,25 @@ router.post('/updatestudent/:id', async (req, res) => {
       contact, 
       course, 
       yearsection, 
-      sub_sched_lst} = req.body;    
+      sub_sched_lst} = req.body;
+
+    const notUniqueStudentID = await Student.find({student_id: student_id});
+    if (!notUniqueStudentID) return validation('studentIDExists', res);
+
+    const updateStudent = await Student.findOneAndUpdate({_id: req.params.id}, {
+      lastname: lastname, 
+      firstname: firstname, 
+      middlename: middlename, 
+      age: age, 
+      dob: Date.parse(dob), 
+      address: address, 
+      contact: contact, 
+      course: course, 
+      yearsection: yearsection, 
+      sub_sched_lst: sub_sched_lst
+    }, {useFindAndModify: false})
+
+    res.send({msg: 'update successful!', emp: updateStudent});
   } catch (err) { res.status(500).json({error: err.message}); }
 })
 

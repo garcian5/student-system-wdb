@@ -38,14 +38,15 @@ app.use('/subsched', require('./routes/subjectscheule'));
 app.use('/schedule', require('./routes/schedule'));
 app.use('/grade', require('./routes/grade'));
 
-// for production
-// create a custom variable inside heroku/this is how we tell our app is on heroku
+// heroku production
+// server static assets if in production
 if (process.env.NODE_ENV === 'production') {
-  // add our react/client application into our server
-  app.use(express.static('client/build'));
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname,  "client/build", "client/public/index.html"));
-  });
+  // set static folder
+  app.use(express.static(path.join(__dirname + '/client/build')));
+  // any request that's not line 24 should load up index.html
+  app.get('*', (req, res) => {
+      res.sendFile(path.join(__dirname + '/client/build/index.html'));
+  })
 }
 
 // start our server

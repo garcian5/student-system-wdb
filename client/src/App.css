@@ -1,0 +1,162 @@
+* {
+  box-sizing: border-box;
+  font-family: Roboto Slab, Arial, sans-serif;
+}
+
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+*:focus, button:focus, button {
+  outline: none;
+}
+
+html,
+body {
+  height: 100%;
+  position: relative;
+}
+
+.App {
+  text-align: center;
+  display: block;
+}
+
+/*-----------------------------------------
+    Center
+-----------------------------------------*/
+.center {
+  margin: 0 auto;
+  /* margin-top: 150px; */
+}
+
+/*-----------------------------------------
+    FORM STYLES
+-----------------------------------------*/
+input[type="text"], input[type="Date"], input[type="password"], input[type="number"], .select-dropdown {  
+  width: 30%;
+  padding: 8px;
+  margin: 10px 10px;
+  border: 1px solid rgb(128, 127, 127);
+  /* border-radius: 4px; */
+  font-size: 17px;
+}
+
+/*input and button styles*/
+button, input[type="button"], input[type="submit"] {
+  border: 1px solid #4d7a99;
+  border-radius: 5%;
+  padding: 15px 60px;
+  background-color: #6baad4;
+  color: #fff;  
+  font-size: 20px;
+  /* margin: 20px; */
+}
+/*on button hover*/
+button:hover, input[type="button"]:hover, input[type="submit"]:hover {
+  background-color: #559ecf;
+  cursor: pointer;
+}
+
+/*align input boxes*/
+label{
+  display: inline-block;
+  clear: left;
+  width: 250px;
+  margin: 5px 5px;
+  text-align: right;
+}
+input, select {
+  display: inline-block;
+}
+
+.select-dropdown {
+  margin: 20px 10px;
+  width: 20%;
+}
+
+/*-----------------------------------------
+          centering table
+-----------------------------------------*/
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 10px;
+}
+table.center {
+  margin-top: 35px;
+  margin-left: auto; 
+  margin-right: auto;
+}
+
+/*-----------------------------------------
+          HOME LOGIN
+-----------------------------------------*/
+.home-login {
+  position: relative;
+  height: 500px;
+  font-size: 25px;
+}
+
+.home-form {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+/*style input from home form*/
+.home-form input { border-color: rgb(33, 128, 33); }
+
+/*-----------------------------------------
+          DEPARTMENTS
+-----------------------------------------*/
+/*convert button to links*/
+.link-style-btn {
+  background-color: transparent;
+  font-size: 17px;
+  color: rgb(16, 89, 156);
+  text-decoration: underline;
+  border: none;  
+  padding: 0;
+  margin: 15px 55px;
+}
+.link-style-btn:hover {
+  background-color: transparent;
+  color: rgb(13, 63, 110);
+}
+.departments-heading {
+  color: rgb(12, 60, 105);
+  font-size: 50px;
+  font-weight: 400;
+}
+
+/*-----------------------------------------
+        STUDENT DIRECTORY STYLE
+-----------------------------------------*/
+li {
+  list-style-type: none;
+}
+.name-lst {
+  font-size: 25px;
+  text-align: center;
+}
+
+/*-----------------------------------------
+        STUDENT INFO STYLE
+-----------------------------------------*/
+.back-btn {
+  text-align: left;
+}
+
+/*-----------------------------------------
+        ERROR MESSAGE STYLE
+-----------------------------------------*/
+.error-msg {
+  color: rgb(187, 46, 46);
+  font-weight: 300;
+  font-size: 20px;
+}

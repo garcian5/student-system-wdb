@@ -2,6 +2,7 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose'); // mongodb orm
+const path = require('path'); // deals with file paths
 
 // configure our environment variables
 require('dotenv').config();

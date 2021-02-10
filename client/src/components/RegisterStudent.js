@@ -102,7 +102,7 @@ export default class RegisterStudent extends Component {
       .then(res => {
         console.log(res.data + " sent!");
         this.setState({sent: true});
-        //this.props.history.push('/student-directory', this.props.history.location.state);
+        this.props.history.push('/student-directory', this.props.history.location.state);
       })
       .catch(err => { 
         console.log(err.response.data.msg)

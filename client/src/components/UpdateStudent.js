@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
-import students from '../data/students';
+//import students from '../data/students';
 
 export default class UpdateStudent extends Component {
   constructor () {
     super();
     this.state = {
+      _id: '',
       id: '',
       firstname: '',
       lastname: '',
@@ -17,6 +19,7 @@ export default class UpdateStudent extends Component {
       year_sec: '',
       age: 0,
 
+      grades: [],
       schedule: [],
       prelim: [],
       midterm: [],
@@ -29,28 +32,22 @@ export default class UpdateStudent extends Component {
   componentDidMount() {
     // if our state is not empty we allow access, if it is we deny access to page
     if (this.props.history.location.state !== undefined) {
-      const student_info = this.props.history.location.state.student_info[0];
-      // loop through schedule and add key value pair list onto prelim and midterm
-      const sched = this.props.history.location.state.schedule;
-      /* const gradeKeyVal = sched.map(sub => {
-        const subGrade = {          
-          subject_name: sub.subject_name,
-          grade: 0
-        }
-        return subGrade
-      }) */
+      const {student_info, grades} = this.props.history.location.state;
+
       this.setState({
-        id: student_info.id,
+        _id: student_info._id,
+        id: student_info.student_id,
         firstname: student_info.firstname,
         lastname: student_info.lastname,
         middlename: student_info.middlename,
-        dob: student_info.dob,
+        dob: Date.parse(student_info.dob),
         address: student_info.address,
         contact_num: student_info.contact,
         course: student_info.course,
         year_sec: student_info.yearsection,
         age: student_info.age,
-        schedule: sched,
+        schedule: student_info.sub_sched_lst,
+        grades: grades
       })
     }
   }
@@ -63,80 +60,46 @@ export default class UpdateStudent extends Component {
 
   handleInputChange = (event) => {
     const {name, value} = event.target;
-    if (name === 'prelim') {
-      this.setState({
-        [name]: value
-      })
-    } else {
-      this.setState({
-        [name]: value
-      })
-    }
-  }
-
-  /* prelimInputChange = (sub_name, event) => { 
-    const {name, value} = event.target;   
-    // copy of list
-    //let prelims = [...this.state.prelim]
-    // copy of item
-    //let preGrade = {...prelims[sub_name]}
-    // console.log(name + ':', value)
-    console.log('prelim:', this.state.prelim.find(g => {
-      console.log('find:', g)
-      return g.subject_name === sub_name
-
-    }))
     this.setState({
-      prelim: value
+      [name]: value
     })
-  } */
+  }
 
   updateStudent = (event) => {
     event.preventDefault();
-    const {id, firstname, middlename, lastname, dob, address, age, contact_num, course, year_sec} = this.state;
-    // loop through list of students, find student to update by id
-    for (const student of students) {
-      // change student info by id and then break loop after update
-      if (student.id === id) {
-        student.id = id;
-        student.firstname = firstname;        
-        student.lastname = lastname;        
-        student.middlename = middlename;
-        student.dob = dob;
-        student.address = address;
-        student.age = age;
-        student.contact = contact_num;
-        student.course = course;
-        student.yearsection = year_sec;
-        break;
-      }
+    const {_id, student_id, firstname, lastname, middlename, dob, address, contact_num, course, year_sec, age, schedule} = this.state;
+    console.log(_id);
+
+    const updateStudent = {
+      student_id: student_id,
+      firstname: firstname,
+      lastname: lastname,
+      middlename: middlename,
+      dob: dob,
+      address: address,
+      contact: contact_num,
+      course: course,
+      yearsection: year_sec,
+      age: age,
+      sub_sched_lst: schedule
     }
+    
+    axios.post('http://localhost:5000/student/updatestudent/' + _id, updateStudent)
+      .then(res => {
+        console.log('updated!');
+        this.props.history.push('/student-directory', this.props.history.location.state);
+      })
+      .catch(err => { 
+        console.log(err.response.data.msg)
+        this.setState({ errorMsg: err.response.data.msg }) });
+    
     this.setState({
       updated: true
     })
   }
 
   render() {
-    /* console.log(this.state.prelim)
-    const renderUpdateGrades = this.state.schedule.map(sched => (
-      <div key={sched.id}>
-        <label>Prelim: </label>
-        <input 
-          type = "number" 
-          name = 'prelim'
-          value = {this.state.prelim.find(g => g.subject_name === sched.subject_name)}
-          onChange = {(e) => this.prelimInputChange(sched.subject_name, e)}
-        />
-        <label>Midterm: </label>
-        <input 
-          type = "number" 
-          name = "midterm" 
-          value = {this.state.midterm.find(g => g.subject_name === sched.subject_name)}
-          onChange = {this.handleInputChange}
-        />
-        <label>{sched.subject_name}</label>
-      </div>
-    )) */
+    //console.log(this.state.schedule);
     return (
       <div>
         <button className='back-btn link-style-btn' onClick={this.backBtnClicked}>Back</button>

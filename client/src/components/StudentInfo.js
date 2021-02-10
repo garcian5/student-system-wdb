@@ -35,7 +35,9 @@ export default class StudentInfo extends Component {
             firstMount: false
           })
         }))
-        .catch(err => { this.setState({ errorMsg: err.response.data.msg }) });
+        .catch(err => { 
+          console.log('error:', err.response.data.msg)
+          this.setState({ errorMsg: err.response.data.msg }) });
     }
   }
 
@@ -56,13 +58,14 @@ export default class StudentInfo extends Component {
   deleteBtnClicked = () => this.setState({delModalShow: true})
   onModalHide = () => this.setState({delModalShow: false})
 
-  render() {
+  render() {    
     // object destructuring - for easy use
     //const {student_info} = this.state;
         
     // if we are allowed access to page and the page is not on the first stage of mounting, display student info
     if (this.state.accessAllowed && !this.state.firstMount) {
       const {student_info, grades, delModalShow} = this.state;
+      console.log('sub sched:', student_info)
 
       // render schedule table
       const renderSchedule = student_info.sub_sched_lst.map (sched => (
@@ -99,7 +102,7 @@ export default class StudentInfo extends Component {
 
           <p>Student ID Number: {student_info.student_id}</p>
           <p>Name: {student_info.firstname} {student_info.middlename} {student_info.lastname}</p>
-          <p>Date of Birth: {student_info.dob.toString().substring(3, 15)}</p>
+          <p>Date of Birth: {student_info.dob.toString().substring(0, 10)}</p>
           <p>Age: {student_info.age}</p>
           <p>Address: {student_info.address}</p>
           <p>Contact Number: {student_info.contact}</p>

@@ -42,10 +42,10 @@ app.use('/grade', require('./routes/grade'));
 // server static assets if in production
 if (process.env.NODE_ENV === 'production') {
   // set static folder
-  app.use(express.static(path.join(__dirname + '/client/build')));
+  app.use(express.static(path.join(__dirname + 'client', 'build')));
   // any request that's not line 24 should load up index.html
   app.get('*', (req, res) => {
-      res.sendFile(path.join(__dirname + '/client/build/index.html'));
+      res.sendFile(path.join(__dirname + 'client', 'build', 'index.html'));
   })
 }
 

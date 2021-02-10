@@ -48,7 +48,7 @@ export default class StudentInfo extends Component {
   updateBtnClicked = () => {
     const student_info = {
       student_info: this.state.student_info,
-      schedule: this.state.schedule
+      grades: this.state.grades
     }
     this.props.history.push('/student-update', student_info);
   }

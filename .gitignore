@@ -1,8 +1,2 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
-/client/node_modules
-
-# for backend
+node_modules
 .env
-/node_modules

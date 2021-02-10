@@ -44,7 +44,7 @@ if (process.env.NODE_ENV === 'production') {
   // add our react/client application into our server
   app.use(express.static('client/build'));
   app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname,  "build", "index.html"));
+    res.sendFile(path.resolve(__dirname,  "client/build", "client/public/index.html"));
   });
 }
 

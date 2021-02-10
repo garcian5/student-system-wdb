@@ -42,7 +42,10 @@ app.use('/grade', require('./routes/grade'));
 // create a custom variable inside heroku/this is how we tell our app is on heroku
 if (process.env.NODE_ENV === 'production') {
   // add our react/client application into our server
-  app.use(express.static('client/build'))
+  app.use(express.static('client/build'));
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname,  "build", "index.html"));
+  });
 }
 
 // start our server

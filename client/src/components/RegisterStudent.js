@@ -98,7 +98,8 @@ export default class RegisterStudent extends Component {
       sub_sched_lst: send_subschedlst
     }
 
-    axios.post('http://localhost:5000/student/addstudent', addStudent)
+    const reqURL = process.env.NODE_ENV === 'production' ? '/student/addstudent': 'http://localhost:5000/student/addstudent';
+    axios.post(reqURL, addStudent)
       .then(res => {
         console.log(res.data + " sent!");
         this.setState({sent: true});

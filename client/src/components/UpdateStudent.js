@@ -84,7 +84,8 @@ export default class UpdateStudent extends Component {
       sub_sched_lst: schedule
     }
     
-    axios.post('http://localhost:5000/student/updatestudent/' + _id, updateStudent)
+    const reqURL = process.env.NODE_ENV === 'production' ? '/student/updatestudent/': 'http://localhost:5000/student/updatestudent/';
+    axios.post(reqURL + _id, updateStudent)
       .then(res => {
         console.log('updated!');
         this.props.history.push('/student-directory', this.props.history.location.state);

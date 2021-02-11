@@ -55,7 +55,7 @@ export default class UpdateStudent extends Component {
   // go back to student directory page
   backBtnClicked = () => {
     // this.props.history.location.state = student id
-    this.props.history.push('/student-directory', this.props.history.location.state);
+    this.props.history.push('/student-info', this.state._id);
   }
 
   handleInputChange = (event) => {

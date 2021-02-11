@@ -65,7 +65,6 @@ export default class StudentInfo extends Component {
     // if we are allowed access to page and the page is not on the first stage of mounting, display student info
     if (this.state.accessAllowed && !this.state.firstMount) {
       const {student_info, grades, delModalShow} = this.state;
-      console.log('sub sched:', student_info)
 
       // render schedule table
       const renderSchedule = student_info.sub_sched_lst.map (sched => (

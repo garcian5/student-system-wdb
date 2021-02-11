@@ -46,7 +46,7 @@ input[type="text"], input[type="Date"], input[type="password"], input[type="numb
 /*input and button styles*/
 button, input[type="button"], input[type="submit"] {
   border: 1px solid #4d7a99;
-  border-radius: 5%;
+  /* border-radius: 5%; */
   padding: 15px 60px;
   background-color: #6baad4;
   color: #fff;  

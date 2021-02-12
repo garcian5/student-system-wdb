@@ -120,6 +120,7 @@ export default class StudentInfo extends Component {
               {renderSchedule}
             </tbody>
           </table>
+          <button type='button' className='print-btn'>Print</button>
 
           {
             this.state.grades.length === 0 ?
@@ -139,9 +140,12 @@ export default class StudentInfo extends Component {
                   </tr>
                   {renderGrades}
                 </tbody>
-              </table>
+              </table>              
             </div>
           }
+          <button type='button' className='transcript-btn'>Transcripts</button>
+          <button type='button' className='print-btn'>Print</button>
+
           <DeleteModal 
             show={delModalShow}
             onHide={this.onModalHide}

@@ -25,7 +25,10 @@ export default class UpdateStudent extends Component {
       midterm: [],
       final: [],
 
-      updated: false
+      updated: false,
+      firstMount: true,
+      avail_scheds: [],
+      errorMsg: ''
     }
   }
 
@@ -52,6 +55,18 @@ export default class UpdateStudent extends Component {
     }
   }
 
+  componentDidUpdate () {
+    if (this.state.firstMount) {
+      axios.get('/subsched/allsubscheds')
+        .then(res => {
+          this.setState({avail_scheds: res.data, firstMount: false})
+        })
+        .catch(err => { 
+          console.log('error:', err.response.data.msg)
+          this.setState({ errorMsg: err.response.data.msg }) });
+    }
+  }
+
   // go back to student directory page
   backBtnClicked = () => {
     // this.props.history.location.state = student id
@@ -68,7 +83,6 @@ export default class UpdateStudent extends Component {
   updateStudent = (event) => {
     event.preventDefault();
     const {_id, student_id, firstname, lastname, middlename, dob, address, contact_num, course, year_sec, age, schedule} = this.state;
-    console.log(_id);
 
     const updateStudent = {
       student_id: student_id,
@@ -88,7 +102,7 @@ export default class UpdateStudent extends Component {
     axios.post(reqURL + _id, updateStudent)
       .then(res => {
         console.log('updated!');
-        this.props.history.push('/student-directory', this.props.history.location.state);
+        this.props.history.push('/student-info', _id);
       })
       .catch(err => { 
         console.log(err.response.data.msg)
@@ -100,105 +114,110 @@ export default class UpdateStudent extends Component {
   }
 
   render() {
-    //console.log(this.state.schedule);
-    return (
-      <div>
-        <button className='back-btn link-style-btn' onClick={this.backBtnClicked}>Back</button>
+    if (this.state.firstMount) {
+      return (<div><p>Loading...</p></div>)
+    } else {
+      //console.log(this.state.schedule)
+      return (
+        <div>
+          <button className='back-btn link-style-btn' onClick={this.backBtnClicked}>Back</button>
 
-        <form onSubmit={this.updateStudent}>
-          <label>Student ID Number: </label>
-          <input 
-            type = "text" 
-            name = "id" 
-            value = {this.state.id}
-            onChange = {this.handleInputChange}
-            required
-          /> <br />
-          <label>First Name: </label>
-          <input 
-            type = "text" 
-            name = "firstname" 
-            value = {this.state.firstname}
-            onChange = {this.handleInputChange}
-            required
-          />
-          <label>Last Name: </label>
-          <input 
-            type = "text" 
-            name = "lastname" 
-            value = {this.state.lastname}
-            onChange = {this.handleInputChange}
-            required
-          /> <br />
-          <label>Middle Name: </label>
-          <input 
-            type = "text" 
-            name = "middlename" 
-            value = {this.state.middlename}
-            onChange = {this.handleInputChange}
-            required
-          /> <br />
-          <label>Age: </label>
-          <input 
-            type = "number" 
-            name = "age" 
-            value = {this.state.age}
-            onChange = {this.handleInputChange}
-            required
-          /> <br />
-          <label>Date of Birth: </label>
-          <input 
-            type = "Date" 
-            name = "dob" 
-            value = {this.state.dob}
-            onChange = {this.handleInputChange}
-            required
-          /> <br />
-          <label>Address: </label>
-          <input 
-            type = "text" 
-            name = "address" 
-            value = {this.state.address}
-            onChange = {this.handleInputChange}
-            required
-          /> <br />
-          <label>Contact Number: </label>
-          <input 
-            type = "text" 
-            name = "contact_num" 
-            value = {this.state.contact_num}
-            onChange = {this.handleInputChange}
-            required
-          /> <br />
-          <label>Course: </label>
-          <input 
-            type = "text" 
-            name = "course" 
-            value = {this.state.course}
-            onChange = {this.handleInputChange}
-            required
-          /> <br />
-          <label>Year & Section: </label>
-          <input 
-            type = "text" 
-            name = "year_sec" 
-            value = {this.state.year_sec}
-            onChange = {this.handleInputChange}
-            required
-          /> <br />
+          <form onSubmit={this.updateStudent}>
+            <label>Student ID Number: </label>
+            <input 
+              type = "text" 
+              name = "id" 
+              value = {this.state.id}
+              onChange = {this.handleInputChange}
+              required
+            /> <br />
+            <label>First Name: </label>
+            <input 
+              type = "text" 
+              name = "firstname" 
+              value = {this.state.firstname}
+              onChange = {this.handleInputChange}
+              required
+            />
+            <label>Last Name: </label>
+            <input 
+              type = "text" 
+              name = "lastname" 
+              value = {this.state.lastname}
+              onChange = {this.handleInputChange}
+              required
+            /> <br />
+            <label>Middle Name: </label>
+            <input 
+              type = "text" 
+              name = "middlename" 
+              value = {this.state.middlename}
+              onChange = {this.handleInputChange}
+              required
+            /> <br />
+            <label>Age: </label>
+            <input 
+              type = "number" 
+              name = "age" 
+              value = {this.state.age}
+              onChange = {this.handleInputChange}
+              required
+            /> <br />
+            <label>Date of Birth: </label>
+            <input 
+              type = "Date" 
+              name = "dob" 
+              value = {this.state.dob}
+              onChange = {this.handleInputChange}
+              required
+            /> <br />
+            <label>Address: </label>
+            <input 
+              type = "text" 
+              name = "address" 
+              value = {this.state.address}
+              onChange = {this.handleInputChange}
+              required
+            /> <br />
+            <label>Contact Number: </label>
+            <input 
+              type = "text" 
+              name = "contact_num" 
+              value = {this.state.contact_num}
+              onChange = {this.handleInputChange}
+              required
+            /> <br />
+            <label>Course: </label>
+            <input 
+              type = "text" 
+              name = "course" 
+              value = {this.state.course}
+              onChange = {this.handleInputChange}
+              required
+            /> <br />
+            <label>Year & Section: </label>
+            <input 
+              type = "text" 
+              name = "year_sec" 
+              value = {this.state.year_sec}
+              onChange = {this.handleInputChange}
+              required
+            /> <br />
 
-          <label>Department: </label>
-          <select name="departments">
-            <option value="ICS">ICS</option>
-          </select> <br />
+            <label>Department: </label>
+            <select name="departments">
+              <option value="ICS">ICS</option>
+            </select> <br />
 
-          {/* renderUpdateGrades */}
+            {/* renderUpdateGrades */}
 
-          <button>Update {this.state.lastname}</button>
-        </form>
+            <button>Update {this.state.lastname}</button>
+          </form>
 
-        {this.state.updated ? <p>{this.state.firstname} successfully updated!</p> : null}
-      </div>
-    )
+          {this.state.updated ? <p>{this.state.firstname} successfully updated!</p> : null}
+          {this.state.errorMsg !== '' ? <p>ERROR! {this.state.errorMsg}</p> : null}
+        </div>
+      )
+    }
   }
 }

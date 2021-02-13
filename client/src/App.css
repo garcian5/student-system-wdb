@@ -132,10 +132,20 @@ table.center {
   background-color: transparent;
   color: rgb(13, 63, 110);
 }
+
+.depts-lnk {
+  margin: 70px 50px;
+}
+
 .departments-heading {
   color: rgb(12, 60, 105);
   font-size: 50px;
   font-weight: 400;
+  margin-bottom: 50px;
+}
+
+.depts-main {
+  margin: 100px;
 }
 
 /*-----------------------------------------

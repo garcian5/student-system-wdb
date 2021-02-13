@@ -171,7 +171,7 @@ export default class StudentInfo extends Component {
         </div>
       )
     } else if (this.state.firstMount) {
-      return (<div><p>Loading...</p></div>)
+      return (<div className='loader'></div>)
     } else if (!this.state.accessAllowed) {
       // display error message if access not allowed or it's not first mount
       return (

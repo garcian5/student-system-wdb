@@ -152,7 +152,11 @@ export default class RegisterStudent extends Component {
 
   render() {
     if (this.state.firstMount) {
-      return ( <div><p>Loading...</p></div> )
+      return ( 
+      <div>
+        <p>Loading...</p>
+        <div className='loader'></div>
+      </div> )
     } else {
       // if state subject_id is empty, this will not be rendered
       // but if it's not empty, it will filter the schedules according to the selected subject and then render the times of that subject

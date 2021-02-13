@@ -59,7 +59,7 @@ export default class Departments extends Component {
   render() {
     // if the component is in its first mount, don't display contents
     if (this.state.firstMount) {
-      return (<h3>Loading...</h3>)
+      return (<div className='loader'></div>)
     } else if (this.state.accessAllowed && !this.state.firstMount) {
       // if access allowed and not first mount, display contents
       return (

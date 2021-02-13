@@ -44,7 +44,10 @@ export default class StudentDirectory extends Component {
   render() {
     if (this.state.firstMount) {
       return (
-        <div><p>Loading...</p></div>
+        <div>
+          <p>Loading...</p>
+          <div className='loader'></div>
+        </div>
       )
     } else {
       // iterate through the list of students and display their names in the list.

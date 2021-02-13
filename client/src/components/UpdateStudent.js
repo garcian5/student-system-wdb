@@ -115,7 +115,12 @@ export default class UpdateStudent extends Component {
 
   render() {
     if (this.state.firstMount) {
-      return (<div><p>Loading...</p></div>)
+      return (
+        <div>
+          <p>Loading...</p>
+          <div className='loader'></div>
+        </div>
+      )
     } else {
       //console.log(this.state.schedule)
       return (

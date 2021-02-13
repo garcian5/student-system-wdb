@@ -120,99 +120,113 @@ export default class UpdateStudent extends Component {
       //console.log(this.state.schedule)
       return (
         <div className=''>
-          <button className='back-btn link-style-btn' onClick={this.backBtnClicked}>Back</button>
+          <div className='to-left'>
+            <button className='back-btn link-style-btn' onClick={this.backBtnClicked}>
+              <ion-icon name="arrow-back-outline"></ion-icon>
+            </button>
+          </div>
 
-          <form onSubmit={this.updateStudent}>
-            <label>Student ID Number: </label>
-            <input 
-              type = "text" 
-              name = "id" 
-              value = {this.state.id}
-              onChange = {this.handleInputChange}
-              required
-            /> <br />
-            <label>First Name: </label>
-            <input 
-              type = "text" 
-              name = "firstname" 
-              value = {this.state.firstname}
-              onChange = {this.handleInputChange}
-              required
-            /> <br />
-            <label>Last Name: </label>
-            <input 
-              type = "text" 
-              name = "lastname" 
-              value = {this.state.lastname}
-              onChange = {this.handleInputChange}
-              required
-            /> <br />
-            <label>Middle Name: </label>
-            <input 
-              type = "text" 
-              name = "middlename" 
-              value = {this.state.middlename}
-              onChange = {this.handleInputChange}
-              required
-            /> <br />
-            <label>Age: </label>
-            <input 
-              type = "number" 
-              name = "age" 
-              value = {this.state.age}
-              onChange = {this.handleInputChange}
-              required
-            /> <br />
-            <label>Date of Birth: </label>
-            <input 
-              type = "Date" 
-              name = "dob" 
-              value = {this.state.dob}
-              onChange = {this.handleInputChange}
-              required
-            /> <br />
-            <label>Address: </label>
-            <input 
-              type = "text" 
-              name = "address" 
-              value = {this.state.address}
-              onChange = {this.handleInputChange}
-              required
-            /> <br />
-            <label>Contact Number: </label>
-            <input 
-              type = "text" 
-              name = "contact_num" 
-              value = {this.state.contact_num}
-              onChange = {this.handleInputChange}
-              required
-            /> <br />
-            <label>Course: </label>
-            <input 
-              type = "text" 
-              name = "course" 
-              value = {this.state.course}
-              onChange = {this.handleInputChange}
-              required
-            /> <br />
-            <label>Year & Section: </label>
-            <input 
-              type = "text" 
-              name = "year_sec" 
-              value = {this.state.year_sec}
-              onChange = {this.handleInputChange}
-              required
-            /> <br />
+          <h3>
+            <ion-icon class='reg-per-icon' name="create-outline"></ion-icon>
+            Update {this.state.firstname}'s Information
+          </h3>          
 
-            <label>Department: </label>
-            <select name="departments">
-              <option value="ICS">ICS</option>
-            </select> <br />
+          <div className='action-form'>
+            <form onSubmit={this.updateStudent}>
+              <label>Student ID Number: </label>
+              <input 
+                type = "text" 
+                name = "id" 
+                value = {this.state.id}
+                onChange = {this.handleInputChange}
+                required
+              /> <br />
+              <label>First Name: </label>
+              <input 
+                type = "text" 
+                name = "firstname" 
+                value = {this.state.firstname}
+                onChange = {this.handleInputChange}
+                required
+              /> <br />
+              <label>Last Name: </label>
+              <input 
+                type = "text" 
+                name = "lastname" 
+                value = {this.state.lastname}
+                onChange = {this.handleInputChange}
+                required
+              /> <br />
+              <label>Middle Name: </label>
+              <input 
+                type = "text" 
+                name = "middlename" 
+                value = {this.state.middlename}
+                onChange = {this.handleInputChange}
+                required
+              /> <br />
+              <label>Age: </label>
+              <input 
+                type = "number" 
+                name = "age" 
+                value = {this.state.age}
+                onChange = {this.handleInputChange}
+                required
+              /> <br />
+              <label>Date of Birth: </label>
+              <input 
+                type = "Date" 
+                name = "dob" 
+                value = {this.state.dob}
+                onChange = {this.handleInputChange}
+                required
+              /> <br />
+              <label>Address: </label>
+              <input 
+                type = "text" 
+                name = "address" 
+                value = {this.state.address}
+                onChange = {this.handleInputChange}
+                required
+              /> <br />
+              <label>Contact Number: </label>
+              <input 
+                type = "text" 
+                name = "contact_num" 
+                value = {this.state.contact_num}
+                onChange = {this.handleInputChange}
+                required
+              /> <br />
+              <label>Course: </label>
+              <input 
+                type = "text" 
+                name = "course" 
+                value = {this.state.course}
+                onChange = {this.handleInputChange}
+                required
+              /> <br />
+              <label>Year & Section: </label>
+              <input 
+                type = "text" 
+                name = "year_sec" 
+                value = {this.state.year_sec}
+                onChange = {this.handleInputChange}
+                required
+              /> <br />
 
-            {/* renderUpdateGrades */}
+              <label>Department: </label>
+              <select name="departments">
+                <option value="ICS">ICS</option>
+              </select> <br />
 
-            <button>Update {this.state.lastname}</button>
-          </form>
+              {/* renderUpdateGrades */}
+
+              <button className='register-btn'>
+                <ion-icon class='person-icon' name="pencil-outline"></ion-icon>
+                Update {this.state.lastname}
+              </button>
+            </form>
+          </div>
 
           {this.state.updated ? <p>{this.state.firstname} successfully updated!</p> : null}
           {this.state.errorMsg !== '' ? <p>ERROR! {this.state.errorMsg}</p> : null}

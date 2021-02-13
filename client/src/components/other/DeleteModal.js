@@ -33,7 +33,7 @@ export default function DeleteModal(props) {
         </Modal.Body>
 
         <Modal.Footer>
-          <button className='del-img-mod-btn' onClick={delImg}>Delete</button>
+          <button className='del-mod-btn' onClick={delImg}>Delete</button>
           <button className='cancel-btn' onClick={props.onHide}>Cancel</button>
         </Modal.Footer>
       </Modal>

@@ -275,3 +275,19 @@ img, .no-img {
   margin-right: 190px;  
   color: rgb(71, 22, 22);
 }
+
+/*-----------------------------------------
+        DELETE MODAL STYLE
+-----------------------------------------*/
+.del-mod-btn {
+  background-color: rgb(240, 155, 155);
+  padding: 15px 40px;
+  border: 1px solid rgb(94, 93, 93);
+}
+.del-mod-btn:hover {background-color: rgb(240, 131, 131);}
+.cancel-btn {
+  background-color: transparent;
+  padding: 15px 40px;
+  color: #3a85b8;
+}
+.cancel-btn:hover {color: #fff; background-color: #97d2f7;}

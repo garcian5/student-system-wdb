@@ -160,3 +160,20 @@ li {
   font-weight: 300;
   font-size: 20px;
 }
+
+.print-btn {
+  padding: 10px;
+}
+.transcript-btn {
+  padding: 10px;
+  margin-right: 190px;  
+}
+
+.to-left { 
+  /* float: left; margin: 10px 0px; */
+  text-align: left;
+}
+
+.action-form {
+  margin: 50px 0px;
+}

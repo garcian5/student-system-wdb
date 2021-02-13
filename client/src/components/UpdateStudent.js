@@ -138,7 +138,7 @@ export default class UpdateStudent extends Component {
               value = {this.state.firstname}
               onChange = {this.handleInputChange}
               required
-            />
+            /> <br />
             <label>Last Name: </label>
             <input 
               type = "text" 

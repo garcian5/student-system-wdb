@@ -88,7 +88,11 @@ export default class StudentInfo extends Component {
 
       return (
         <div>
-          <button className='back-btn link-style-btn' onClick={this.backBtnClicked}>Back</button>
+          <div className='to-left'>
+            <button className='back-btn link-style-btn' onClick={this.backBtnClicked}>
+              <ion-icon name="arrow-back-outline"></ion-icon>
+            </button>
+          </div>
           <button className='link-style-btn' onClick={this.updateBtnClicked}>Update</button>
           <button className='link-style-btn' onClick={this.deleteBtnClicked}>Delete</button> <br/>
           

@@ -158,6 +158,8 @@ li {
   font-size: 25px;
   text-align: center;
 }
+.home-icon {font-size: 25px;}
+.dir {margin-top: 70px;}
 
 
 /*-----------------------------------------
@@ -185,6 +187,7 @@ li {
   /* float: left; margin: 10px 0px; */
   text-align: left;
 }
+.to-right{text-align: right;}
 
 .action-form {
   margin: 50px 0px;
@@ -233,8 +236,4 @@ li {
   margin-right: 15px;
   font-size: 30px;
   color: rgb(68, 32, 32);
-}
-
-.reg-sched {
-
 }

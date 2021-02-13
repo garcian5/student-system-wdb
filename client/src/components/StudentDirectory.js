@@ -58,9 +58,18 @@ export default class StudentDirectory extends Component {
       
       return (
         <div>
-          <button className='link-style-btn' onClick={this.backBtnClicked}>Back</button>
-          <button className='link-style-btn' onClick={this.backBtnClicked}>Home</button>
-          <h1 className='departments-heading'>ICS Student Directory</h1>
+          <div className='to-left'>
+            <button className='back-btn link-style-btn' onClick={this.backBtnClicked}>
+              <ion-icon name="arrow-back-outline"></ion-icon>
+            </button>
+            <div style={{float: 'right'}}>
+              <button className='link-style-btn' onClick={this.backBtnClicked}>
+                <ion-icon class='home-icon' name="home-outline"></ion-icon>
+              </button>
+            </div>
+          </div>
+
+          <h1 className='dir departments-heading'>ICS Student Directory</h1>
           <p className='name-lst'>Name List</p>
           {students_lst.length !== 0 ? students_lst 
             : 

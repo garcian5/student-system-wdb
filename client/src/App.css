@@ -34,14 +34,17 @@ body {
 /*-----------------------------------------
     FORM STYLES
 -----------------------------------------*/
-input[type="text"], input[type="Date"], input[type="password"], input[type="number"], .select-dropdown {  
+select, input[type="text"], input[type="Date"], input[type="password"], input[type="number"], .select-dropdown {  
   width: 30%;
   padding: 8px;
-  margin: 10px 10px;
+  margin: 0 10px 10px 10px;
   border: 1px solid rgb(128, 127, 127);
   /* border-radius: 4px; */
   font-size: 17px;
 }
+
+.sched-time { margin: 40px 5px 0px 0px; }
+.sched-time:hover, .time-label { cursor: pointer; }
 
 /*input and button styles*/
 button, input[type="button"], input[type="submit"] {
@@ -58,6 +61,8 @@ button:hover, input[type="button"]:hover, input[type="submit"]:hover {
   background-color: #559ecf;
   cursor: pointer;
 }
+
+select:hover {cursor: pointer;}
 
 /*align input boxes*/
 label{
@@ -85,7 +90,6 @@ table, th, td {
   padding: 10px;
 }
 table.center {
-  margin-top: 35px;
   margin-left: auto; 
   margin-right: auto;
 }
@@ -145,12 +149,6 @@ li {
   text-align: center;
 }
 
-/*-----------------------------------------
-        STUDENT INFO STYLE
------------------------------------------*/
-.back-btn {
-  text-align: left;
-}
 
 /*-----------------------------------------
         ERROR MESSAGE STYLE
@@ -169,6 +167,10 @@ li {
   margin-right: 190px;  
 }
 
+/*-----------------------------------------
+        REGISTER STYLE
+-----------------------------------------*/
+
 .to-left { 
   /* float: left; margin: 10px 0px; */
   text-align: left;
@@ -176,4 +178,53 @@ li {
 
 .action-form {
   margin: 50px 0px;
+}
+
+.back-btn {
+  font-size: 25px;
+  margin: 20px 0 0 20px;
+}
+
+.add-sched-btn {
+  padding: 5px 2px;
+  margin: 15px;
+  border-radius: 50%;  
+  box-shadow: 2px 2px 5px rgb(184, 183, 183);
+}
+.add-icon, .rem-icon {
+  font-size: 30px;
+  margin-right: 10px;  
+  color: rgb(128, 50, 50);  
+  padding: 2px 1px 1px 10px;
+}
+.rem-sched-btn {
+  background-color: transparent;  
+  border: none;
+  padding: 0;
+}
+.rem-sched-btn:hover, .rem-icon:hover {
+  background-color: transparent;
+  color: rgb(107, 43, 43); 
+}
+
+.register-btn {
+  background-color: rgb(130, 173, 130);
+  border: 1px solid rgb(127, 143, 127);
+  color: rgb(68, 32, 32);
+  margin: 35px 0;
+}
+.register-btn:hover {background-color: rgb(150, 190, 150);}
+.person-icon {
+  margin-right: 10px;
+  font-size: 18px;
+  color: rgb(68, 32, 32);
+}
+.reg-per-icon {
+  margin-right: 15px;
+  font-size: 30px;
+  color: rgb(68, 32, 32);
+}
+
+.reg-sched {
+
 }

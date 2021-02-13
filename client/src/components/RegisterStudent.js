@@ -161,22 +161,31 @@ export default class RegisterStudent extends Component {
       const renderSubSchedTime = filterSched.map(subsched => 
         (
           <div key={subsched._id}>
-            <input 
-              type="radio" 
-              name="sub_sched_id" 
-              value={subsched._id}
-              checked={this.state.sub_sched_id === subsched._id}
-              onChange={this.handleInputChange}
-              required
-            />
-            <label>{subsched.time.from} - {subsched.time.to} {subsched.day}</label>
+            <label className='time-label'>
+              <input 
+                className='sched-time'
+                type="radio" 
+                name="sub_sched_id" 
+                value={subsched._id}
+                checked={this.state.sub_sched_id === subsched._id}
+                onChange={this.handleInputChange}
+                required
+              />
+            {subsched.time.from} - {subsched.time.to} {subsched.day}</label>
           </div>
         )
       )
 
       const schedTable = this.state.sched_to_render.map(sched => (
         <tr key={sched._id}>
-          <td><button onClick={() => this.removeSched(sched._id)}>Remove</button></td>
+          <td>
+            <button 
+              className='rem-sched-btn'
+              onClick={() => this.removeSched(sched._id)}
+            >
+              <ion-icon class='rem-icon' name="close-outline"></ion-icon>
+            </button>
+          </td>
           <td>{sched.time.from} - {sched.time.to}</td>
           <td>{sched.subject_id.subject_name}</td>
           <td>{sched.day}</td>
@@ -187,10 +196,14 @@ export default class RegisterStudent extends Component {
       return (
         <div>
           <div className='to-left'>
-            <button className='link-style-btn' onClick={this.backToDept}>
-              Back
+            <button className='back-btn link-style-btn' onClick={this.backToDept}>
+              <ion-icon name="arrow-back-outline"></ion-icon>
             </button>
           </div>
+          <h3>
+            <ion-icon class='reg-per-icon' name="person-add-outline"></ion-icon>
+            Register Student            
+          </h3>
           <div className='action-form'>
             <form onSubmit={this.registerStudent}>
               <label>Student ID Number: </label>
@@ -301,14 +314,20 @@ export default class RegisterStudent extends Component {
                 this.state.subject_id !== '' ?
                 <div>
                   {renderSubSchedTime}
-                  <button type='button' onClick={this.addToSched}>Add to Schedule</button><br />
+                  <button                   
+                    type='button' 
+                    className='add-sched-btn'
+                    onClick={this.addToSched}
+                  >
+                    <ion-icon class='add-icon' name="add-outline"></ion-icon>
+                  </button><br />
                 </div>
                 : null
               } <br />
 
               {
                 this.state.sched_to_render.length > 0 ?
-                <div>
+                <div className='reg-sched'>
                   <p>SCHEDULE</p>
                   <table className='center'>
                     <tbody>
@@ -332,7 +351,10 @@ export default class RegisterStudent extends Component {
               {this.state.registerError ? <p style={{color: 'red'}}>Register Error!</p> : null}
               {this.state.errorMsg !== '' ? <p style={{color: 'red'}}>{this.state.errorMsg}</p> : null}
 
-              <button>Register Student</button>
+              <button className='register-btn'>
+                <ion-icon class='person-icon' name="person-outline"></ion-icon>
+                Register Student
+              </button>
             </form>
           </div>
         </div>

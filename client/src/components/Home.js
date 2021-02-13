@@ -46,7 +46,7 @@ export default class Home extends Component {
     //const reqURL = process.env.NODE_ENV === 'production' ? '/items': 'http://localhost:5000/items';
     return (
       <div>
-        <img src={schoollogo} alt="school_logo"/>
+        <img src={schoollogo} alt="school_logo"/><br />
         <div className="home-login">        
           <form onSubmit={this.logIn} className='home-form'>
             <label>Admin ID Number: </label>

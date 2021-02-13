@@ -100,9 +100,9 @@ export default class StudentInfo extends Component {
           </div>
           
           {
-            student_info.lastname.charAt(0).concat(student_info.student_id) === 'E1' ? <img src={E1} alt="empanso"/>
-            : student_info.lastname.charAt(0).concat(student_info.student_id) === 'L2' ? <img src={L2} alt="lore"/>
-            : student_info.lastname.charAt(0).concat(student_info.student_id) === 'P3' ? <img src={P3} alt="perez"/>
+            student_info.lastname.charAt(0).concat(student_info.student_id) === 'E1' ? <img className='w-img' src={E1} alt="empanso"/>
+            : student_info.lastname.charAt(0).concat(student_info.student_id) === 'L2' ? <img className='w-img' src={L2} alt="lore"/>
+            : student_info.lastname.charAt(0).concat(student_info.student_id) === 'P3' ? <img className='w-img' src={P3} alt="perez"/>
             : <h4 className='no-img'>No Image</h4>
           }
 

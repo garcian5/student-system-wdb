@@ -171,14 +171,6 @@ li {
   font-size: 20px;
 }
 
-.print-btn {
-  padding: 10px;
-}
-.transcript-btn {
-  padding: 10px;
-  margin-right: 190px;  
-}
-
 /*-----------------------------------------
         REGISTER STYLE
 -----------------------------------------*/
@@ -236,4 +228,50 @@ li {
   margin-right: 15px;
   font-size: 30px;
   color: rgb(68, 32, 32);
+}
+
+
+/*-----------------------------------------
+        STUDENT INFO STYLE
+-----------------------------------------*/
+
+.student-info {
+  text-align: initial;
+  margin: 20px 10px 20px 50px;
+}
+img, .no-img { 
+  float: left;
+  margin: 50px 50px 10px 0px;
+}
+.student-stuff {
+  margin-top: 50px;
+}
+.bord {
+  display: inline-block;
+  border: 1px solid rgb(37, 37, 207);
+  padding: 8px;
+  width: 60%;
+  margin: 3px;
+}
+.studtab-secs {
+  text-align: center;
+  margin-top: 50px;
+}
+.sc {text-align: center;}
+.grades-sec {
+  margin-top: 50px;
+}
+.print-btn {
+  padding: 10px 30px;
+  margin-top: 20px;
+  color: rgb(13, 80, 11);
+}
+.print-icon {
+  font-size: 20px;
+  margin-right: 10px;
+}
+.transcript-btn {
+  padding: 10px 30px;
+  margin-right: 190px;  
+  color: rgb(71, 22, 22);
 }

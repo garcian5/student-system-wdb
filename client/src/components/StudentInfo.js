@@ -87,69 +87,82 @@ export default class StudentInfo extends Component {
       ))
 
       return (
-        <div>
+        <div className='student-info'>
           <div className='to-left'>
             <button className='back-btn link-style-btn' onClick={this.backBtnClicked}>
               <ion-icon name="arrow-back-outline"></ion-icon>
             </button>
           </div>
-          <button className='link-style-btn' onClick={this.updateBtnClicked}>Update</button>
-          <button className='link-style-btn' onClick={this.deleteBtnClicked}>Delete</button> <br/>
+
+          <div className='sc'>
+            <button className='link-style-btn' onClick={this.updateBtnClicked}>Update</button>
+            <button className='link-style-btn' onClick={this.deleteBtnClicked}>Delete</button> <br/>
+          </div>
           
           {
             student_info.lastname.charAt(0).concat(student_info.student_id) === 'E1' ? <img src={E1} alt="empanso"/>
             : student_info.lastname.charAt(0).concat(student_info.student_id) === 'L2' ? <img src={L2} alt="lore"/>
             : student_info.lastname.charAt(0).concat(student_info.student_id) === 'P3' ? <img src={P3} alt="perez"/>
-            : <h4>No Image</h4>
+            : <h4 className='no-img'>No Image</h4>
           }
 
-          <p>Student ID Number: {student_info.student_id}</p>
-          <p>Name: {student_info.firstname} {student_info.middlename} {student_info.lastname}</p>
-          <p>Date of Birth: {student_info.dob.toString().substring(0, 10)}</p>
-          <p>Age: {student_info.age}</p>
-          <p>Address: {student_info.address}</p>
-          <p>Contact Number: {student_info.contact}</p>
-          <p>Course: {student_info.course}</p>
-          <p>Year and Section: {student_info.yearsection}</p>
+          <div className='student-stuff'>
+            <p className='bord'>Student ID Number: {student_info.student_id}</p> <br />
+            <p className='bord'>Name: {student_info.firstname} {student_info.middlename} {student_info.lastname}</p><br />
+            <p className='bord'>Date of Birth: {student_info.dob.toString().substring(0, 10)}</p><br />
+            <p className='bord'>Age: {student_info.age}</p><br />
+            <p className='bord'>Address: {student_info.address}</p><br />
+            <p className='bord'>Contact Number: {student_info.contact}</p><br />
+            <p className='bord'>Course: {student_info.course}</p><br />
+            <p className='bord'>Year and Section: {student_info.yearsection}</p><br />
+          </div>
 
-          <p>SCHEDULE</p>
-          <table className='center'>
-            <tbody>
-              <tr>
-                <th>TIME</th>
-                <th>SUBJECT</th>
-                <th>DAY</th>
-                <th>INSTRUCTOR</th>
-              </tr>
-              {renderSchedule}
-            </tbody>
-          </table>
-          <button type='button' className='print-btn'>Print</button>
+          <div className='studtab-secs'>
+            <p>SCHEDULE</p>
+            <table className='center'>
+              <tbody>
+                <tr>
+                  <th>TIME</th>
+                  <th>SUBJECT</th>
+                  <th>DAY</th>
+                  <th>INSTRUCTOR</th>
+                </tr>
+                {renderSchedule}
+              </tbody>
+            </table>
+            <button type='button' className='print-btn'>
+              <ion-icon class='print-icon' name="print-outline"></ion-icon>
+              Print
+            </button>
 
-          {
-            this.state.grades.length === 0 ?
-            <div>
-              <p>No Grades to display yet.</p>
-            </div>
-            : 
-            <div>
-              <p>GRADES</p>
-              <table className='center'>
-                <tbody>
-                  <tr>
-                    <th>SUBJECTS</th>
-                    <th>PRELIM</th>
-                    <th>MIDTERM</th>
-                    <th>FINAL</th>
-                  </tr>
-                  {renderGrades}
-                </tbody>
-              </table>              
-            </div>
-          }
-          <button type='button' className='transcript-btn'>Transcripts</button>
-          <button type='button' className='print-btn'>Print</button>
-
+            {
+              this.state.grades.length === 0 ?
+              <div>
+                <p>No Grades to display yet.</p>
+              </div>
+              : 
+              <div className='grades-sec'>
+                <p>GRADES</p>
+                <table className='center'>
+                  <tbody>
+                    <tr>
+                      <th>SUBJECTS</th>
+                      <th>PRELIM</th>
+                      <th>MIDTERM</th>
+                      <th>FINAL</th>
+                    </tr>
+                    {renderGrades}
+                  </tbody>
+                </table>              
+              </div>
+            }
+            <button type='button' className='transcript-btn'>Transcripts</button>
+            <button type='button' className='print-btn'>
+              <ion-icon class='print-icon' name="print-outline"></ion-icon>
+              Print
+            </button>          
+          </div>
+          
           <DeleteModal 
             show={delModalShow}
             onHide={this.onModalHide}

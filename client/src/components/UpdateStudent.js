@@ -119,7 +119,7 @@ export default class UpdateStudent extends Component {
     } else {
       //console.log(this.state.schedule)
       return (
-        <div>
+        <div className=''>
           <button className='back-btn link-style-btn' onClick={this.backBtnClicked}>Back</button>
 
           <form onSubmit={this.updateStudent}>

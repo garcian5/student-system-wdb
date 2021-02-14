@@ -50,20 +50,9 @@ export default class UpdateStudent extends Component {
         year_sec: student_info.yearsection,
         age: student_info.age,
         schedule: student_info.sub_sched_lst,
-        grades: grades
+        grades: grades,
+        firstMount: false
       })
-    }
-  }
-
-  componentDidUpdate () {
-    if (this.state.firstMount) {
-      axios.get('/subsched/allsubscheds')
-        .then(res => {
-          this.setState({avail_scheds: res.data, firstMount: false})
-        })
-        .catch(err => { 
-          console.log('error:', err.response.data.msg)
-          this.setState({ errorMsg: err.response.data.msg }) });
     }
   }
 
